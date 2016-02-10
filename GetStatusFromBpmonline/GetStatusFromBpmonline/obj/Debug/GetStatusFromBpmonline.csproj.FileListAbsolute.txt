@@ -1,0 +1,6 @@
+c:\users\user\documents\visual studio 2015\Projects\GetStatusFromBpmonline\GetStatusFromBpmonline\bin\Debug\GetStatusFromBpmonline.exe.config
+c:\users\user\documents\visual studio 2015\Projects\GetStatusFromBpmonline\GetStatusFromBpmonline\bin\Debug\GetStatusFromBpmonline.exe
+c:\users\user\documents\visual studio 2015\Projects\GetStatusFromBpmonline\GetStatusFromBpmonline\bin\Debug\GetStatusFromBpmonline.pdb
+c:\users\user\documents\visual studio 2015\Projects\GetStatusFromBpmonline\GetStatusFromBpmonline\obj\Debug\GetStatusFromBpmonline.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2015\Projects\GetStatusFromBpmonline\GetStatusFromBpmonline\obj\Debug\GetStatusFromBpmonline.exe
+c:\users\user\documents\visual studio 2015\Projects\GetStatusFromBpmonline\GetStatusFromBpmonline\obj\Debug\GetStatusFromBpmonline.pdb

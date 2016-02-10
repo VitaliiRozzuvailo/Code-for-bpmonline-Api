@@ -1,0 +1,6 @@
+c:\users\user\documents\visual studio 2015\Projects\Test_NovaPochta_API\Test_NovaPochta_API\bin\Debug\Test_NovaPochta_API.exe.config
+C:\Users\user\Documents\Visual Studio 2015\Projects\Test_NovaPochta_API\Test_NovaPochta_API\bin\Debug\Test_NovaPochta_API.exe
+C:\Users\user\Documents\Visual Studio 2015\Projects\Test_NovaPochta_API\Test_NovaPochta_API\bin\Debug\Test_NovaPochta_API.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\Test_NovaPochta_API\Test_NovaPochta_API\obj\Debug\Test_NovaPochta_API.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\Visual Studio 2015\Projects\Test_NovaPochta_API\Test_NovaPochta_API\obj\Debug\Test_NovaPochta_API.exe
+C:\Users\user\Documents\Visual Studio 2015\Projects\Test_NovaPochta_API\Test_NovaPochta_API\obj\Debug\Test_NovaPochta_API.pdb

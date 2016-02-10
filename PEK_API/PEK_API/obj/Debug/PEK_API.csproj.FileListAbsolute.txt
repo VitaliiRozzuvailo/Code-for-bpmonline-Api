@@ -1,0 +1,8 @@
+c:\users\user\documents\visual studio 2015\Projects\PEK_API\PEK_API\bin\Debug\PEK_API.exe.config
+c:\users\user\documents\visual studio 2015\Projects\PEK_API\PEK_API\bin\Debug\PEK_API.exe
+c:\users\user\documents\visual studio 2015\Projects\PEK_API\PEK_API\bin\Debug\PEK_API.pdb
+c:\users\user\documents\visual studio 2015\Projects\PEK_API\PEK_API\bin\Debug\Newtonsoft.Json.dll
+c:\users\user\documents\visual studio 2015\Projects\PEK_API\PEK_API\bin\Debug\Newtonsoft.Json.xml
+c:\users\user\documents\visual studio 2015\Projects\PEK_API\PEK_API\obj\Debug\PEK_API.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2015\Projects\PEK_API\PEK_API\obj\Debug\PEK_API.exe
+c:\users\user\documents\visual studio 2015\Projects\PEK_API\PEK_API\obj\Debug\PEK_API.pdb

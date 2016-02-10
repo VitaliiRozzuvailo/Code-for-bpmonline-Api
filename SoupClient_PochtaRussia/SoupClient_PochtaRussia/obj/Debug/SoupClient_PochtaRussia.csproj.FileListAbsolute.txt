@@ -1,0 +1,6 @@
+c:\users\user\documents\visual studio 2015\Projects\SoupClient_PochtaRussia\SoupClient_PochtaRussia\bin\Debug\SoupClient_PochtaRussia.exe.config
+c:\users\user\documents\visual studio 2015\Projects\SoupClient_PochtaRussia\SoupClient_PochtaRussia\obj\Debug\SoupClient_PochtaRussia.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2015\Projects\SoupClient_PochtaRussia\SoupClient_PochtaRussia\bin\Debug\SoupClient_PochtaRussia.exe
+c:\users\user\documents\visual studio 2015\Projects\SoupClient_PochtaRussia\SoupClient_PochtaRussia\bin\Debug\SoupClient_PochtaRussia.pdb
+c:\users\user\documents\visual studio 2015\Projects\SoupClient_PochtaRussia\SoupClient_PochtaRussia\obj\Debug\SoupClient_PochtaRussia.exe
+c:\users\user\documents\visual studio 2015\Projects\SoupClient_PochtaRussia\SoupClient_PochtaRussia\obj\Debug\SoupClient_PochtaRussia.pdb

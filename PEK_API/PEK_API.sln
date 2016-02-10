@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEK_API", "PEK_API\PEK_API.csproj", "{C942AA5E-9623-4ED3-9537-3EEF8BF8ECDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C942AA5E-9623-4ED3-9537-3EEF8BF8ECDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C942AA5E-9623-4ED3-9537-3EEF8BF8ECDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C942AA5E-9623-4ED3-9537-3EEF8BF8ECDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C942AA5E-9623-4ED3-9537-3EEF8BF8ECDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
