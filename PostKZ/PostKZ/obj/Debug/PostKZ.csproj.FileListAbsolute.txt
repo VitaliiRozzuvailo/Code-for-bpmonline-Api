@@ -1,0 +1,6 @@
+C:\Users\user\Desktop\-\PostKZ\PostKZ\bin\Debug\PostKZ.exe.config
+C:\Users\user\Desktop\-\PostKZ\PostKZ\bin\Debug\PostKZ.exe
+C:\Users\user\Desktop\-\PostKZ\PostKZ\bin\Debug\PostKZ.pdb
+C:\Users\user\Desktop\-\PostKZ\PostKZ\obj\Debug\PostKZ.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\-\PostKZ\PostKZ\obj\Debug\PostKZ.exe
+C:\Users\user\Desktop\-\PostKZ\PostKZ\obj\Debug\PostKZ.pdb
