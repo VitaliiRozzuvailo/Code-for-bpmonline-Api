@@ -74,7 +74,23 @@ namespace SoupClient_PochtaRussia
                </soap:Body>
             </soap:Envelope>", ttn, LOGIN, PASSWORD);
 
-            var response = SendRequestToRussianPost(request);
+            //var response = SendRequestToRussianPost(request);
+
+            var response = "<?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S=\"http://www.w3.org/2003/05/soap-envelope\"><S:Body><ns7:PostalOrderEventsForMailResponse xmlns:ns2=\"http://russianpost.org/sms-info/data\" xmlns:ns3=\"http://russianpost.org/operationhistory/data\" xmlns:ns4=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns5=\"http://www.russianpost.org/custom-duty-info/data\" xmlns:ns6=\"http://www.russianpost.org/RTM/DataExchangeESPP/Data\" xmlns:ns7=\"http://russianpost.org/operationhistory\"><ns6:PostalOrderEventsForMaiOutput><PostalOrderEvent Number=\"96598\" EventDateTime=\"2015-12-11T15:04:37.000+03:00\" EventType=\"1\" EventName=\"Приём\" IndexTo=\"141021\" IndexEvent=\"298300\" SumPaymentForward=\"234000\" CountryEventCode=\"RU\" CountryToCode=\"RU\"/><PostalOrderEvent Number=\"96598\" EventDateTime=\"2015-12-12T16:49:13.000+03:00\" EventType=\"3\" EventName=\"Оплата\" IndexTo=\"141021\" IndexEvent=\"141021\" SumPaymentForward=\"234000\" CountryEventCode=\"RU\" CountryToCode=\"RU\"/></ns6:PostalOrderEventsForMaiOutput></ns7:PostalOrderEventsForMailResponse></S:Body></S:Envelope>";
+
+            XmlDocument document = new XmlDocument();
+            document.LoadXml(response);  //loading soap message as string 
+            XmlNamespaceManager manager = new XmlNamespaceManager(document.NameTable);
+            manager.AddNamespace("ns6", "http://www.russianpost.org/RTM/DataExchangeESPP/Data");
+            XmlNodeList xNodelst = document.DocumentElement.SelectNodes("//ns6:PostalOrderEventsForMaiOutput", manager);
+
+            //TODO
+
+            foreach (XmlNode xn in xNodelst)
+            {
+                result = xn["ns3:OperationParameters"].FirstChild.LastChild.InnerText + " (" + xn["ns3:OperationParameters"].LastChild.LastChild.InnerText + ")";
+            }
+            return result;
 
             return result;
         }
