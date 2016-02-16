@@ -279,7 +279,7 @@
             return result;
         }
 
-        private string GetPriceDeliveryOrderInNP(string cost, string weight, string citySender, string cityRecipient)
+        /*private string GetPriceDeliveryOrderInNP(string cost, string weight, string citySender, string cityRecipient)
         {
             XDocument doc = new XDocument(
                 new XElement("root",
@@ -303,7 +303,7 @@
 
             string status = result.GetElementsByTagName("Cost")[0].InnerText;
             return status;
-        }
+        }*/
 
         ///создать ЕН с обратной досьавкой(деньги)
         private string CreateRequestWithRedelivery(Contragent sender, Contragent recipient, string paymentMethod, string date, string weight,
@@ -383,9 +383,9 @@
         }
 
 
-        /*[OperationContract]
-        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped,
-        ResponseFormat = WebMessageFormat.Json)]*/
+       /// [OperationContract]
+       /// [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped,
+       // ResponseFormat = WebMessageFormat.Json)]
         public string CreateOrderInNP(string fName, string lName, string city, string price, string date,
             string phoneR, string seatsAmount, string serviceType, string weight, string paymentMethod,
             string address, string isAddress, string isRedelivery, string streetD, string buildD, string flatD)
@@ -399,7 +399,7 @@
             xml.LoadXml(senderString);
             // проверяем успешность запроса
             bool success = bool.Parse(xml.GetElementsByTagName("success")[0].InnerText);
-            if (!success) return "Error. " + xml.GetElementsByTagName("error")[0].InnerText;
+            if (!success) return "Error. " + xml.GetElementsByTagName("item")[0].InnerText;
             //получаем ид контрагента
             sender.Ref = xml.GetElementsByTagName("Ref")[0].InnerText;
             //получаем ид города контрагента
@@ -412,7 +412,7 @@
             xml.LoadXml(sStr);
             // проверяем успешность запроса
             success = bool.Parse(xml.GetElementsByTagName("success")[0].InnerText);
-            if (!success) return "Error. " + xml.GetElementsByTagName("error")[0].InnerText;
+            if (!success) return "Error. " + xml.GetElementsByTagName("item")[0].InnerText;
             //получаем контакт
             sender.Contact = xml.GetElementsByTagName("Ref")[0].InnerText;
             //получаем  телефон контрагента отправителя
@@ -431,7 +431,7 @@
             xml.LoadXml(recipienString);
             // проверяем успешность запроса
             success = bool.Parse(xml.GetElementsByTagName("success")[0].InnerText);
-            if (!success) return "Error. " + xml.GetElementsByTagName("error")[0].InnerText;
+            if (!success) return "Error. " + xml.GetElementsByTagName("item")[0].InnerText;
             //ид получателя
             recipient.Ref = xml.GetElementsByTagName("Ref")[0].InnerText;
             //контактных персон получателя
@@ -448,18 +448,18 @@
                 {
                     xml.LoadXml(streetString);
                     success = bool.Parse(xml.GetElementsByTagName("success")[0].InnerText);
-                    if (!success) return "Error. " + xml.GetElementsByTagName("error")[0].InnerText;
+                    if (!success) return "Error. Unable to find street!";
                     streetRef = xml.GetElementsByTagName("Ref")[0].InnerText;
                 }
                 catch
                 {
-                    return "Error. Street not found!";
+                    return "Error. Unable to find street!";
                 }
 
                 var addressString = this.SaveRecipientAddres(recipient.Ref, streetRef, buildD, flatD);
                 xml.LoadXml(addressString);
                 success = bool.Parse(xml.GetElementsByTagName("success")[0].InnerText);
-                if (!success) return "Error. " + xml.GetElementsByTagName("error")[0].InnerText;
+                if (!success) return "Error. " + xml.GetElementsByTagName("item")[0].InnerText;
                 recipient.Address = xml.GetElementsByTagName("Ref")[0].InnerText;
             }
             else
@@ -477,9 +477,9 @@
             return result;
         }
 
-        /* [OperationContract]
-         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped,
-         ResponseFormat = WebMessageFormat.Json)]*/
+       // [OperationContract]
+        //[WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped,
+       // ResponseFormat = WebMessageFormat.Json)]
         public string GetStatusOrderInNP(string en)
         {
             XDocument doc = new XDocument(
@@ -492,6 +492,27 @@
                             new XElement("item", en)))));
 
             return SendRequestToNovaPochta(doc.ToString());
+        }
+
+        //[OperationContract]
+        //[WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped,
+        // ResponseFormat = WebMessageFormat.Json)]
+        public string DeleteENInOrder(string docRef)
+        {
+            XDocument doc = new XDocument(
+                new XElement("root",
+                    new XElement("apiKey", KEY_API),
+                    new XElement("modelName", "InternetDocument"),
+                    new XElement("calledMethod", "delete"),
+                    new XElement("methodProperties",
+                            new XElement("DocumentRefs", docRef))));
+
+            var result = SendRequestToNovaPochta(doc.ToString());
+
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(result);
+            var success = xml.GetElementsByTagName("success")[0].InnerText;
+            return success;
         }
     }
 }

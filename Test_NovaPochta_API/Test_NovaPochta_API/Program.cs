@@ -10,21 +10,21 @@ namespace Test_NovaPochta_API
             /*string fName, string lName, string city, string price, string date,
             string phoneR, string seatsAmount, string serviceType, string weight, string paymentMethod, string addressRecipient*/
             var s = new SxNovaPochtaApi().CreateOrderInNP(
-                "Дмитрий",
-                "Счастливый",
-                "Киев",
-                "2571.42",
-                "23.12.2015",
-                "0356294616",
+                "Владимир",
+                "Нечипоренко",
+                "Харьков",
+                "628.95",
+                "16.01.2016",
+                "0999308186",
                 "1",
                 "WarehouseWarehouse",
-                "24",
+                "3.9000000000000004",
                 "Cash",
-                "Відділення № 134(до 30 кг), Міні - відділення: вул.Новопирогівська, 31(маг.\"Фора\")",
+                "Відділення № 109 (до 30 кг) Міні-відділення",
+                "false",
                 "true",
-                "true",
-                "героев днепра",
-                "50",
+                "",
+                "",
             "");
 
             //var st = new SxNovaPochtaApi().GetStatusOrderInNP();

@@ -9,8 +9,8 @@ namespace SoupClient_PochtaRussia
     {
         static void Main(string[] args)
         {
-            new RussiaPost_SoapClient().GetOperationHistory("RA644000001RU");
-            new RussiaPost_SoapClient().PostalOrderEventsForMail("14102192069353");
+            new RussiaPost_SoapClient().GetOperationHistory("RA644000002RU");
+            //new RussiaPost_SoapClient().PostalOrderEventsForMail("14102192069353");
             //XmlDocument soapEnvelopeXml = new XmlDocument();
             //soapEnvelopeXml.LoadXml(r);
 
