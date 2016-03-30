@@ -7,20 +7,22 @@ namespace Test_NovaPochta_API
     {
         static void Main(string[] args)
         {
+            //new SxNovaPochtaApi().GetPriceDeliveryOrderInNP("1440", "3", "1", "WarehouseWarehouse", "Николаев");
+            //var res = new SxNovaPochtaApi().GetDepartments("Киев", "в");
             /*string fName, string lName, string city, string price, string date,
             string phoneR, string seatsAmount, string serviceType, string weight, string paymentMethod, string addressRecipient*/
             var s = new SxNovaPochtaApi().CreateOrderInNP(
-                "Владимир",
-                "Нечипоренко",
-                "Харьков",
-                "628.95",
-                "16.01.2016",
-                "0999308186",
+                "Щин",
+                "Кано",
+                "Киев",
+                "1440",
+                "25.03.2016",
+                "380953664653",
                 "1",
                 "WarehouseWarehouse",
-                "3.9000000000000004",
+                "2",
                 "Cash",
-                "Відділення № 109 (до 30 кг) Міні-відділення",
+                "Отделение №48 (до 30 кг): вул. Киквидзе, 7/11 (м. Дружбы Народов)",
                 "false",
                 "true",
                 "",

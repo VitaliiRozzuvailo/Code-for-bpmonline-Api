@@ -1,0 +1,7 @@
+c:\users\user\documents\visual studio 2015\Projects\JsonParserConsoleApplication\JsonParserConsoleApplication\bin\Debug\JsonParserConsoleApplication.exe.config
+c:\users\user\documents\visual studio 2015\Projects\JsonParserConsoleApplication\JsonParserConsoleApplication\bin\Debug\JsonParserConsoleApplication.exe
+c:\users\user\documents\visual studio 2015\Projects\JsonParserConsoleApplication\JsonParserConsoleApplication\bin\Debug\JsonParserConsoleApplication.pdb
+c:\users\user\documents\visual studio 2015\Projects\JsonParserConsoleApplication\JsonParserConsoleApplication\bin\Debug\Newtonsoft.Json.dll
+c:\users\user\documents\visual studio 2015\Projects\JsonParserConsoleApplication\JsonParserConsoleApplication\obj\Debug\JsonParserConsoleApplication.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2015\Projects\JsonParserConsoleApplication\JsonParserConsoleApplication\obj\Debug\JsonParserConsoleApplication.exe
+c:\users\user\documents\visual studio 2015\Projects\JsonParserConsoleApplication\JsonParserConsoleApplication\obj\Debug\JsonParserConsoleApplication.pdb

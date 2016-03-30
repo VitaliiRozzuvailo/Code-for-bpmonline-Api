@@ -105,8 +105,7 @@
                     new XElement("apiKey", KEY_API),
                     new XElement("calledMethod", "getCounterpartyAddresses"),
                     new XElement("methodProperties",
-                        new XElement("CounterpartyProperty", "Sender"),
-                        new XElement("Ref", sRef)),
+                        new XElement("CounterpartyProperty", "Sender")),
                     new XElement("modelName", "Counterparty")));
 
             string result = SendRequestToNovaPochta(doc.ToString());
@@ -279,31 +278,7 @@
             return result;
         }
 
-        /*private string GetPriceDeliveryOrderInNP(string cost, string weight, string citySender, string cityRecipient)
-        {
-            XDocument doc = new XDocument(
-                new XElement("root",
-                    new XElement("apiKey", KEY_API),
-                    new XElement("modelName", "InternetDocument"),
-                    new XElement("calledMethod", "getDocumentPrice"),
-                    new XElement("methodProperties",
-                         new XElement("Cost", cost),
-                         new XElement("Weight", weight),
-                         new XElement("CitySender", citySender),
-                         new XElement("CityRecipient", cityRecipient)
-                         )));
-
-            string responce = SendRequestToNovaPochta(doc.ToString());
-
-            XmlDocument result = new XmlDocument();
-            result.LoadXml(responce);
-            // проверяем успешность запроса
-            bool success = bool.Parse(result.GetElementsByTagName("success")[0].InnerText);
-            if (!success) return string.Empty;
-
-            string status = result.GetElementsByTagName("Cost")[0].InnerText;
-            return status;
-        }*/
+        
 
         ///создать ЕН с обратной досьавкой(деньги)
         private string CreateRequestWithRedelivery(Contragent sender, Contragent recipient, string paymentMethod, string date, string weight,
@@ -383,9 +358,9 @@
         }
 
 
-       /// [OperationContract]
-       /// [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped,
-       // ResponseFormat = WebMessageFormat.Json)]
+        /// [OperationContract]
+        /// [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped,
+        // ResponseFormat = WebMessageFormat.Json)]
         public string CreateOrderInNP(string fName, string lName, string city, string price, string date,
             string phoneR, string seatsAmount, string serviceType, string weight, string paymentMethod,
             string address, string isAddress, string isRedelivery, string streetD, string buildD, string flatD)
@@ -405,8 +380,6 @@
             //получаем ид города контрагента
             sender.City = xml.GetElementsByTagName("City")[0].InnerText;
             //получаем ид склада контрагента
-            // string senderAddress = this.GetAddressSender(senderRef);
-            sender.Address = WAREHOUSE_SENDER;
             //получаем контакт отправителя 
             string sStr = this.GetContactPersons(sender.Ref);
             xml.LoadXml(sStr);
@@ -418,6 +391,9 @@
             //получаем  телефон контрагента отправителя
             sender.Phone = xml.GetElementsByTagName("Phones")[0].InnerText;
 
+            string senderAddress = this.GetAddressSender(sender.Contact);
+            sender.Address = WAREHOUSE_SENDER;
+            //sender.Address = senderAddress;
             //2. создаем получателя
 
             var recipient = new Contragent()
@@ -477,9 +453,48 @@
             return result;
         }
 
-       // [OperationContract]
+        //[OperationContract]
         //[WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped,
-       // ResponseFormat = WebMessageFormat.Json)]
+        //ResponseFormat = WebMessageFormat.Json)]
+        public string GetPriceDeliveryOrderInNP(string cost, string weight, string seatsAmount, string serviceType, string cityRecipient, string citySender = "Харьков")
+        {
+            //город 
+            citySender = this.GetCityByString(citySender);
+
+            //город получателя
+            cityRecipient = this.GetCityByString(cityRecipient);
+
+            XDocument doc = new XDocument(
+                new XElement("root",
+                    new XElement("apiKey", KEY_API),
+                    new XElement("modelName", "InternetDocument"),
+                    new XElement("calledMethod", "getDocumentPrice"),
+                    new XElement("methodProperties",
+                         new XElement("CargoType", "Cargo"),
+                         new XElement("PaymentMethod", "Cash"),
+                         new XElement("SeatsAmount", seatsAmount),
+                         new XElement("ServiceType", serviceType),
+                         new XElement("Cost", cost),
+                         new XElement("Weight", weight),
+                         new XElement("CitySender", citySender),
+                         new XElement("CityRecipient", cityRecipient)
+                         )));
+
+            string responce = SendRequestToNovaPochta(doc.ToString());
+
+            XmlDocument result = new XmlDocument();
+            result.LoadXml(responce);
+            // проверяем успешность запроса
+            bool success = bool.Parse(result.GetElementsByTagName("success")[0].InnerText);
+            if (!success) return string.Empty;
+
+            string priceDelivery = result.GetElementsByTagName("Cost")[0].InnerText;
+            return priceDelivery;
+        }
+
+        // [OperationContract]
+        //[WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped,
+        // ResponseFormat = WebMessageFormat.Json)]
         public string GetStatusOrderInNP(string en)
         {
             XDocument doc = new XDocument(
@@ -513,6 +528,38 @@
             xml.LoadXml(result);
             var success = xml.GetElementsByTagName("success")[0].InnerText;
             return success;
+        }
+
+        //[OperationContract]
+        //[WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped,
+        // ResponseFormat = WebMessageFormat.Json)]
+        public string GetDepartments(string city, string department)
+        {
+            var depString = "";
+            var cityId = this.GetCityByString(city);
+
+            XDocument doc = new XDocument(
+                    new XElement("file",
+                        new XElement("apiKey", KEY_API),
+                        new XElement("calledMethod", "getWarehouses"),
+                        new XElement("methodProperties",
+                            new XElement("CityRef", cityId),
+                            new XElement("FindByString", department)),
+                        new XElement("modelName", "Address")));
+
+            string result = SendRequestToNovaPochta(doc.ToString());
+
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(result);
+            var success = bool.Parse(xml.GetElementsByTagName("success")[0].InnerText);
+            if (!success) return depString;
+
+            var items = xml.GetElementsByTagName("item");
+            for (int i = 0; i < items.Count && i < 10; i++)
+            {
+                depString += xml.GetElementsByTagName("DescriptionRu")[i].InnerText + ";";
+            }
+            return depString;
         }
     }
 }
